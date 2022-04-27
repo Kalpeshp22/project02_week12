@@ -1,14 +1,14 @@
 package computer;
 
+
+import browsertesting.utilities.Utility;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import utilities.Utility;
 
-public class TestSuite extends Utility {
-
+public class TestSuite  extends Utility {
     String baseUrl = "https://demo.nopcommerce.com/";
 
     @Before
@@ -23,12 +23,13 @@ public class TestSuite extends Utility {
         selectByVisibleTextFromDropDown(By.name("products-orderby"), "Name: Z to A");
         verifyText("Name: Z to A", getTextFromElement(By.xpath("//option[contains(text(),'Name: Z to A')]")), "Product is not in Descending order");
     }
+
     @Test
     public void verifyProductAddedToShoppingCartSuccessFully() throws InterruptedException {
         clickOnElement(By.xpath("//a[@href='/computers']"));
         clickOnElement(By.xpath("//img[contains(@title,'Show products in category Desktops')]"));
-        selectByVisibleTextFromDropDown(By.name("products-orderby"),    "Name: A to Z");
-        sendKeysToElement(By.xpath("//div[@class='item-grid']//div[1    ]//div[1]//div[2]//div[3]//div[2]//button[1]"), Keys.ENTER);
+        selectByVisibleTextFromDropDown(By.name("products-orderby"), "Name: A to Z");
+        sendKeysToElement(By.xpath("//div[@class='item-grid']//div[1]//div[1]//div[2]//div[3]//div[2]//button[1]"), Keys.ENTER);
         verifyText("Build your own computer", getTextFromElement(By.xpath("//h1[contains(text(),'Build your own computer')]")),"Message not found");
         selectByVisibleTextFromDropDown(By.xpath("//select[@id='product_attribute_1']"), "2.2 GHz Intel Pentium Dual-Core E2200");
         selectByVisibleTextFromDropDown(By.xpath("//select[@id='product_attribute_2']"), "8GB [+$60.00]");
@@ -49,13 +50,13 @@ public class TestSuite extends Utility {
         clickOnElement(By.id("checkout"));
         verifyText("Welcome, Please Sign In!", getTextFromElement(By.xpath("//h1[contains(text(),'Welcome, Please Sign In!')]")), null);
         clickOnElement(By.xpath("//button[contains(text(),'Checkout as Guest')]"));
-        sendKeysToElement(By.xpath("//input[@id='BillingNewAddress_FirstName']"), "bob");
-        sendKeysToElement(By.xpath("//input[@id='BillingNewAddress_LastName']"), "alexa");
-        sendKeysToElement(By.xpath("//input[@id='BillingNewAddress_Email']"), "abc@realestates.com");
+        sendKeysToElement(By.xpath("//input[@id='BillingNewAddress_FirstName']"), "KALPESH");
+        sendKeysToElement(By.xpath("//input[@id='BillingNewAddress_LastName']"), "PATEL");
+        sendKeysToElement(By.xpath("//input[@id='BillingNewAddress_Email']"), "kalpeshpanchal8@gmail.com");
         selectByVisibleTextFromDropDown(By.xpath("//select[@id='BillingNewAddress_CountryId']"), "United Kingdom");
         sendKeysToElement(By.xpath("//input[@id='BillingNewAddress_City']"), "London");
-        sendKeysToElement(By.xpath("//input[@id='BillingNewAddress_Address1']"), "69 Haydon Drive");
-        sendKeysToElement(By.xpath("//input[@id='BillingNewAddress_ZipPostalCode']"), "HA0 2LD");
+        sendKeysToElement(By.xpath("//input[@id='BillingNewAddress_Address1']"), "69 Testing Avenue");
+        sendKeysToElement(By.xpath("//input[@id='BillingNewAddress_ZipPostalCode']"), "TE5 7IN");
         sendKeysToElement(By.xpath("//input[@id='BillingNewAddress_PhoneNumber']"), "+44123456789");
         clickOnElement(By.cssSelector("div.master-wrapper-page:nth-child(6) div.master-wrapper-content div.master-column-wrapper div.center-1 div.page.checkout-page div.page-body.checkout-data ol.opc li.tab-section.allow.active:nth-child(1) div.step.a-item div.buttons:nth-child(2) > button.button-1.new-address-next-step-button:nth-child(4)"));
         clickOnElement(By.id("shippingoption_1"));
@@ -63,7 +64,7 @@ public class TestSuite extends Utility {
         clickOnElement(By.id("paymentmethod_1"));
         clickOnElement(By.cssSelector("div.master-wrapper-page:nth-child(6) div.master-wrapper-content div.master-column-wrapper div.center-1 div.page.checkout-page div.page-body.checkout-data ol.opc li.tab-section.allow.active:nth-child(4) div.step.a-item div.buttons:nth-child(2) > button.button-1.payment-method-next-step-button"));
         selectByVisibleTextFromDropDown(By.xpath("//select[@id='CreditCardType']"), "Master card");
-        sendKeysToElement(By.xpath("//input[@id='CardholderName']"), "bob alexa");
+        sendKeysToElement(By.xpath("//input[@id='CardholderName']"), "kalpesh patel");
         sendKeysToElement(By.xpath("//input[@id='CardNumber']"), "2222 4000 7000 0005");
         selectByVisibleTextFromDropDown(By.xpath("//select[@id='ExpireMonth']"), "12");
         selectByVisibleTextFromDropDown(By.xpath("//select[@id='ExpireYear']"), "2035");
@@ -82,5 +83,5 @@ public class TestSuite extends Utility {
     public void close(){
         closeBrowser();
     }
-}
 
+}

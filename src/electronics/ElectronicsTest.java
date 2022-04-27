@@ -1,15 +1,16 @@
-package electronics;
+package Electronics;
 
+import browsertesting.utilities.Utility;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import utilities.Utility;
 
 import java.util.Random;
 
-public class ElectronicsTest  extends Utility {
+public class ElectronicsTest extends Utility {
     String baseUrl = "https://demo.nopcommerce.com/";
 
     @Before
@@ -61,12 +62,12 @@ public class ElectronicsTest  extends Utility {
         verifyText("Shopping cart", getTextFromElement(By.xpath("//h1[contains(text(),'Shopping cart')]")),"Error");
         clickOnElement(By.xpath("//input[@id='termsofservice']"));
         clickOnElement(By.xpath("//button[@id='checkout']"));
-        sendTextToElement(By.xpath("//input[@id='BillingNewAddress_FirstName']"),"Bob");
-        sendTextToElement(By.xpath("//input[@id='BillingNewAddress_LastName']"),"Alexa");
+        sendTextToElement(By.xpath("//input[@id='BillingNewAddress_FirstName']"),"KALPESH");
+        sendTextToElement(By.xpath("//input[@id='BillingNewAddress_LastName']"),"PATEL");
         selectByVisibleTextFromDropDown(By.xpath("//select[@id='BillingNewAddress_CountryId']"), "United Kingdom");
         sendTextToElement(By.xpath("//input[@id='BillingNewAddress_City']"), "London");
-        sendTextToElement(By.xpath("//input[@id='BillingNewAddress_Address1']"), "69 Haydon drive");
-        sendTextToElement(By.xpath("//input[@id='BillingNewAddress_ZipPostalCode']"), "HA1 1AA");
+        sendTextToElement(By.xpath("//input[@id='BillingNewAddress_Address1']"), "69 Testing Avenue");
+        sendTextToElement(By.xpath("//input[@id='BillingNewAddress_ZipPostalCode']"), "TE5 7IN");
         sendTextToElement(By.xpath("//input[@id='BillingNewAddress_PhoneNumber']"), "01234567890");
         clickOnElement(By.xpath("//button[@onclick='Billing.save()']"));
         clickOnElement(By.xpath("//input[@id='shippingoption_2']"));
@@ -74,7 +75,7 @@ public class ElectronicsTest  extends Utility {
         clickOnElement(By.xpath("//input[@id='paymentmethod_1']"));
         clickOnElement(By.xpath("//button[@class='button-1 payment-method-next-step-button']"));
         selectByVisibleTextFromDropDown(By.xpath("//select[@id='CreditCardType']"), "Visa");
-        sendTextToElement(By.xpath("//input[@id='CardholderName']"), "Bob Alexa");
+        sendTextToElement(By.xpath("//input[@id='CardholderName']"), "Kalpesh Patel");
         sendTextToElement(By.xpath("//input[@id='CardNumber']"), "2222 4000 7000 0005");
         selectByVisibleTextFromDropDown(By.xpath("//select[@id='ExpireMonth']"), "12");
         selectByVisibleTextFromDropDown(By.xpath("//select[@id='ExpireYear']"), "2035");
@@ -92,7 +93,7 @@ public class ElectronicsTest  extends Utility {
         verifyText("Welcome to our store", getTextFromElement(By.xpath("//h2[contains(text(),'Welcome to our store')]")), "Error");
         clickOnElement(By.xpath("//a[contains(text(),'Log out')]"));
         String URL = driver.getCurrentUrl();
-      //  Assert.assertEquals(URL, "https://demo.nopcommerce.com/" );
+        Assert.assertEquals(URL, "https://demo.nopcommerce.com/" );
     }
     @After
     public void close(){
